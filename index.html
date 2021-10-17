@@ -6,95 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles.css" />
     <title>Image Co-ordinates</title>
-
-    <script type="text/javascript">
-      function FindPosition(oElement) {
-        if (typeof oElement.offsetParent != "undefined") {
-          for (
-            var posX = 0, posY = 0;
-            oElement;
-            oElement = oElement.offsetParent
-          ) {
-            posX += oElement.offsetLeft;
-            posY += oElement.offsetTop;
-          }
-          return [posX, posY];
-        } else {
-          return [oElement.x, oElement.y];
-        }
-      }
-
-      function GetCoordinates(e) {
-        var PosX = 0;
-        var PosY = 0;
-        var ImgPos;
-        ImgPos = FindPosition(myImg);
-        if (!e) var e = window.event;
-        if (e.pageX || e.pageY) {
-          PosX = e.pageX;
-          PosY = e.pageY;
-        } else if (e.clientX || e.clientY) {
-          PosX =
-            e.clientX +
-            document.body.scrollLeft +
-            document.documentElement.scrollLeft;
-          PosY =
-            e.clientY +
-            document.body.scrollTop +
-            document.documentElement.scrollTop;
-        }
-        PosX = PosX - ImgPos[0];
-        PosY = PosY - ImgPos[1];
-        document.getElementById("x").innerHTML = PosX;
-        document.getElementById("y").innerHTML = PosY;
-      }
-
-      function getCursorPos(a) {
-        var posx = a.clientX;
-        var posy = a.clientY;
-        output.innerHTML =
-          //   "X: " + (posx - 10) + "px & Y: " + (posy - 91 - 43) + "px";
-          "X: " + (posx - 10) + "px & Y: " + (posy - 91) + "px";
-      }
-    </script>
   </head>
   <body>
     <h1>Get Image Co-ordinates</h1>
-    <!-- <input type="file" name="imagePicker" id="imagePicker" />
-    <br />
-    <hr /> -->
     <table>
       <tr>
         <td>
           <img
             id="myImgId"
-            alt=""
+            alt="the file loads here"
             src="./images/536 x542.jpg"
             width="full"
             height="full"
           />
         </td>
-        <td>
+        <td style="padding-left: 20px">
           <p id="output"></p>
-          <p name="textArea">X:<span id="x"></span> , Y:<span id="y"></span></p>
+          <div id="staticSingle">
+            <span>Clicked Point</span>
+            X: <span id="x"></span> px, Y: <span id="y"></span> px
+          </div>
+          <p>Press LeftMouse + Alt to append Co-ordinates
+            <br />
+            <form>
+              <textarea name="textArea" id="textArea" cols="30" rows="20"></textarea>
+              <br />
+              <button type="submit">Submit</button>
+            </form>
+            <span>Button will generate JSON for array of co-ordinates</span>
+            <br />
+            <span>Browse another image</span>
+            <input type="file" name="" id="imgInp" onchange="readURL(this);" >
+          </p>
         </td>
       </tr>
     </table>
-
-    <script type="text/javascript">
-      var myImg = document.getElementById("myImgId");
-      myImg.onmousedown = GetCoordinates;
-
-      var output = document.getElementById("output");
-      myImg.onmousemove = getCursorPos;
-    </script>
-
-    <!-- <img
-      src="./images/536 x542.jpg"
-      width="400"
-      height="300"
-      alt=""
-      id="myImgId"
-    /> -->
+    <script src="./index.js"></script>
   </body>
 </html>
