@@ -5,6 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles.css" />
+    <link
+      class="jsbin"
+      href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script
+      class="jsbin"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+    ></script>
+    <script
+      class="jsbin"
+      src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"
+    ></script>
     <title>Image Co-ordinates</title>
   </head>
   <body>
@@ -14,7 +28,7 @@
         <td>
           <img
             id="myImgId"
-            alt="the file loads here"
+            alt="my map loads here"
             src="./images/536 x542.jpg"
             width="full"
             height="full"
@@ -22,21 +36,26 @@
         </td>
         <td style="padding-left: 20px">
           <p id="output"></p>
+          <span>Clicked Points</span>
           <div id="staticSingle">
-            <span>Clicked Point</span>
-            X: <span id="x"></span> px, Y: <span id="y"></span> px
+            X:<span id="x"></span> px, Y:<span id="y"></span> px
           </div>
-          <p>Press LeftMouse + Alt to append Co-ordinates
+          <p>
+            Press LeftClick + Alt to append Co-ordinates
             <br />
             <form>
-              <textarea name="textArea" id="textArea" cols="30" rows="20"></textarea>
+              <textarea
+                name="textArea"
+                id="textArea"
+                cols="30"
+                rows="20"
+              ></textarea>
               <br />
               <button type="submit">Submit</button>
             </form>
-            <span>Button will generate JSON for array of co-ordinates</span>
             <br />
-            <span>Browse another image</span>
-            <input type="file" name="" id="imgInp" onchange="readURL(this);" >
+            Browse another Image
+            <input type="file" id="imgInp" onchange="readURL(this);" />
           </p>
         </td>
       </tr>
